@@ -10,16 +10,7 @@ import org.wanshe.gkrpc.server.client.RpcClient;
 public class Client {
     public static void main(String[] args) {
         RpcClient client = new RpcClient();
-        log.info(":" + CalcService.class + " : " + CalcService.class.getName());
-        CalcService service = (CalcService) client.getProxy(CalcService.class);
-
-        if (service == null) {
-            log.info("return is null");
-            return ;
-        } else {
-            log.info("serviceClass : " + service.getClass().getName());
-            log.info("service add : " + service.add(1, 1));
-        }
+        CalcService service = client.getProxy(CalcService.class);
 
         int r1 = service.add(1, 2);
         int r2 = service.sub(1, 2);

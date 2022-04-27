@@ -26,12 +26,14 @@ public class HTTPTransportServer implements TransportServer {
     @Override
     public void init(int port, RequestHandler handler) {
         this.handler = handler;
+        // jetty : 轻量级开源servlet容器
         this.server = new Server(port);
 
-        // servlet 接收请求
+        // servletHandler 用于接收请求与处理
         ServletContextHandler ctx = new ServletContextHandler();
         server.setHandler(ctx);
 
+        // holder 封装servlet 托管RequestServlet
         ServletHolder holder = new ServletHolder(new RequestServlet());
         ctx.addServlet(holder, "/*");
     }

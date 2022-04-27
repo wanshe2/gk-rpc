@@ -42,7 +42,6 @@ public class HTTPTransportClient implements TransportClient {
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
-
     }
 
     @Override

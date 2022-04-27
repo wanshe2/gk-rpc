@@ -65,6 +65,7 @@ public class RemoteInvoker implements InvocationHandler {
         } catch (IOException e) {
             log.warn(e.getMessage(), e);
 
+            response = new Response();
             response.setCode(1);
             response.setMessage("RpcClient got error: "
                     + e.getClass() + " : " + e.getMessage());

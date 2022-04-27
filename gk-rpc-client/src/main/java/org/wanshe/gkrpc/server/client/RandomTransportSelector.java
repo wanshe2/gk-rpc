@@ -28,6 +28,7 @@ public class RandomTransportSelector implements TransportSelector {
                      Class<? extends TransportClient> clazz) {
         count = Math.max(peers.size(), 1);
 
+        // 每个端口都创建 count 个连接
         for (Peer peer : peers) {
             for (int i = 0; i < count; ++ i) {
                 TransportClient client = ReflectionUtils.newInstance(clazz);
@@ -42,6 +43,7 @@ public class RandomTransportSelector implements TransportSelector {
     @Override
     public synchronized TransportClient select() {
         int i = new Random().nextInt(clients.size());
+        // 获取连接 - 移除出可用队列
         return clients.remove(i);
     }
 
