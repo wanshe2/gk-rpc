@@ -26,6 +26,10 @@ public class RpcServer {
     private ServiceManager serviceManager;
     private ServiceInvoker serviceInvoker;
 
+    public RpcServer() {
+        this(new RpcServerConfig());
+    }
+
     public RpcServer(RpcServerConfig config) {
         this.config = config;
 
@@ -67,6 +71,7 @@ public class RpcServer {
 
                 ServiceInstance sis = serviceManager.lookup(request);
                 Object ret = serviceInvoker.invoke(sis, request);
+                resp.setData(ret);
             } catch (IOException e) {
                 log.warn(e.getMessage(), e);
                 resp.setCode(1);

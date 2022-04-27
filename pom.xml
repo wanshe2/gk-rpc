@@ -15,6 +15,7 @@
         <module>gk-rpc-common</module>
         <module>gk-rpc-proto</module>
         <module>gk-rpc-transport</module>
+        <module>gk-rpc-example</module>
     </modules>
 
     <properties>

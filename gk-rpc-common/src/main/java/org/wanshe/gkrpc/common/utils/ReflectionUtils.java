@@ -33,9 +33,9 @@ public class ReflectionUtils {
      * @param clazz 对象类
      * @return class的公共方法
      */
-    public static Method[] getPublicMethods(Class<?> clazz) {
+    public static Method[] getPublicMethods(Class clazz) {
         Method[] methods = clazz.getDeclaredMethods();
-        List<Method> pMethods = new ArrayList<>();
+        List<Method> pMethods = new ArrayList<Method>();
         for (Method m :methods) {
             if (Modifier.isPublic(m.getModifiers())) {
                 pMethods.add(m);
